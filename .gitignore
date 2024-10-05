@@ -47,3 +47,5 @@ Thumbs.db
 .nuxt
 .nitro
 .cache
+
+/apps/backend/.env
