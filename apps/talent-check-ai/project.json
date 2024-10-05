@@ -1,0 +1,8 @@
+{
+  "name": "talent-check-ai",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/talent-check-ai/src",
+  "// targets": "to see all targets run: nx show project talent-check-ai --web",
+  "targets": {}
+}
