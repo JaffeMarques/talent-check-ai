@@ -11,7 +11,7 @@ export class FileSizeValidator implements FileValidatorStrategy {
   async validate(file): Promise<void> {
     if (file.size > this.maxSizeInBytes) {
       throw new BadRequestException(
-        await this.i18n.translate('errors.fileTooLarge', {
+        await this.i18n.translate('translations.errors.fileTooLarge', {
           args: { maxSize: this.maxSizeInBytes / (1024 * 1024) },
         })
       );

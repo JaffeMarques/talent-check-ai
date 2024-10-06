@@ -1,7 +1,0 @@
-{
-  "errors": {
-    "invalidFileType": "Invalid file Type",
-    "fileTooLarge": "The maximum file size is {{maxSize}}",
-    "invalidTextExtraction": "Unable to read text, error: {{error}}"
-  }
-}

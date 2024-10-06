@@ -8,7 +8,7 @@ export class PdfFileValidator implements FileValidatorStrategy {
   async validate(file): Promise<void> {
     if (file.mimetype !== 'application/pdf') {
       throw new BadRequestException(
-        await this.i18n.translate('errors.invalidFileType', {
+        await this.i18n.translate('translations.errors.invalidFileType', {
           args: { type: 'PDF' },
         })
       );

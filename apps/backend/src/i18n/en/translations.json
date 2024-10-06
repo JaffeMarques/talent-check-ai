@@ -1,0 +1,8 @@
+{
+  "errors": {
+    "invalidFileType": "Invalid file Type",
+    "fileTooLarge": "The maximum file size is {maxSize}",
+    "invalidTextExtraction": "Unable to read text, error: {error}"
+  },
+  "questionPrompt": "Generate an interview question for the skill '{skill}'. Please start and end the question with '{skill} -'"
+}

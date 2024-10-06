@@ -2,12 +2,8 @@ import { Module } from '@nestjs/common';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import {
-  I18nModule,
-  I18nJsonLoader,
-  AcceptLanguageResolver,
-} from 'nestjs-i18n';
-import { join } from 'path';
+import { AcceptLanguageResolver, I18nModule } from 'nestjs-i18n';
+import * as path from 'path';
 import { ResumeModule } from './resume/resume.module';
 import { ConfigModule } from '@nestjs/config';
 
@@ -17,10 +13,9 @@ import { ConfigModule } from '@nestjs/config';
     I18nModule.forRoot({
       fallbackLanguage: 'en',
       loaderOptions: {
-        path: join(__dirname, '/i18n/'),
-        watch: process.env.ENVIRONMENT == 'local',
+        path: path.join(__dirname, '/i18n/'),
+        watch: true,
       },
-      loader: I18nJsonLoader,
       resolvers: [AcceptLanguageResolver],
     }),
     ResumeModule,
