@@ -6,6 +6,7 @@
   "private": true,
   "dependencies": {
     "@aws-sdk/client-comprehend": "^3.665.0",
+    "@aws-sdk/client-sagemaker-runtime": "^3.665.0",
     "@google-cloud/language": "^6.5.0",
     "@nestjs/axios": "^3.0.3",
     "@nestjs/common": "^10.0.2",

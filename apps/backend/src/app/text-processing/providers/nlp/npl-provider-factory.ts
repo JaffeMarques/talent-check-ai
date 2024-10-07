@@ -1,4 +1,4 @@
-import { NlpProvider } from '../interfaces/nlp-provider.interface';
+import { NlpProvider } from '../../interfaces/nlp-provider.interface';
 import { AwsNlpService } from './aws/nlp.service';
 import { GoogleNplService } from './google/nlp.service';
 

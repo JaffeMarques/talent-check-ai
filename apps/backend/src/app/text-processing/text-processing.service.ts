@@ -1,26 +1,32 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
 import { NlpProvider } from './interfaces/nlp-provider.interface';
-import { NlpProviderFactory } from './providers/npl-provider-factory';
+import { NlpProviderFactory } from './providers/nlp/npl-provider-factory';
 import { I18nService } from 'nestjs-i18n';
 import pdfParse from 'pdf-parse';
-import { CohereLlmService } from './providers/cohere/llm.service';
+import { LlmProviderBase } from './providers/llm/llm-provider-base';
+import { LlmProviderFactory } from './providers/llm/llm-provider-factory';
 
 @Injectable()
 export class TextProcessingService {
-  private provider: NlpProvider;
-  private llmProvider: CohereLlmService;
+  private configNlpProvider = process.env.NLP_PROVIDER;
+  private configLlmProvider = process.env.LLM_PROVIDER;
+
+  private llmProvider: LlmProviderBase;
+  private nlpProvider: NlpProvider;
 
   constructor(private readonly i18n: I18nService) {
-    this.provider = NlpProviderFactory.create(process.env.PROVIDER);
-    this.llmProvider = new CohereLlmService(i18n);
+    this.nlpProvider = NlpProviderFactory.create(this.configNlpProvider);
+    this.llmProvider = LlmProviderFactory.create(this.configLlmProvider, i18n);
   }
 
   async process(file, lang: string) {
     const text = await this.extractTextFromPdf(file.buffer);
-    const processedText = await this.provider.processText(text, lang);
+
+    const processedText = await this.nlpProvider.processText(text, lang);
     const skills = processedText.entities;
 
     const questions = await this.llmProvider.generateQuestions(skills);
+
     return {
       questions: questions,
       skills: skills,

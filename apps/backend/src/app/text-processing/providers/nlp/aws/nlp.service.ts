@@ -2,7 +2,7 @@ import {
   ComprehendClient,
   DetectEntitiesCommand,
 } from '@aws-sdk/client-comprehend';
-import { NlpProvider } from '../../interfaces/nlp-provider.interface';
+import { NlpProvider } from '../../../interfaces/nlp-provider.interface';
 
 export class AwsNlpService implements NlpProvider {
   private comprehendClient: ComprehendClient;

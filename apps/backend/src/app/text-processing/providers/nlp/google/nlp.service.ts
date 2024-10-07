@@ -1,5 +1,5 @@
 import * as language from '@google-cloud/language';
-import { NlpProvider } from '../../interfaces/nlp-provider.interface';
+import { NlpProvider } from '../../../interfaces/nlp-provider.interface';
 
 export class GoogleNplService implements NlpProvider {
   private client: language.LanguageServiceClient;
