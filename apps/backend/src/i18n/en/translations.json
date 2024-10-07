@@ -4,5 +4,7 @@
     "fileTooLarge": "The maximum file size is {maxSize}",
     "invalidTextExtraction": "Unable to read text, error: {error}"
   },
-  "questionPrompt": "Generate an interview question for the skill '{skill}'. Please start and end the question with '{skill} -'"
+  "questionPrompt": "Generate an interview question for the skill: '{skill}'. Please start and end the question with '{skill} -'",
+  "nlpContext": "You are a highly accurate entity extraction model.",
+  "nlpPrompt": "Extract relevant skills or titles from the following candidate resume in {lang} language:"
 }

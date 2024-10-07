@@ -3,11 +3,12 @@ import {
   DetectEntitiesCommand,
 } from '@aws-sdk/client-comprehend';
 import { NlpProvider } from '../../../interfaces/nlp-provider.interface';
+import { I18nService } from 'nestjs-i18n';
 
 export class AwsNlpService implements NlpProvider {
   private comprehendClient: ComprehendClient;
 
-  constructor() {
+  constructor(private readonly i18n: I18nService) {
     this.comprehendClient = new ComprehendClient({
       region: process.env.AWS_REGION,
       credentials: {
@@ -27,7 +28,11 @@ export class AwsNlpService implements NlpProvider {
     const entities = entitiesResult.Entities;
     const processedEntity = await this.processEntities(entities);
 
-    return { entities: processedEntity };
+    return {
+      entities: {
+        skills: processedEntity,
+      },
+    };
   }
 
   async processEntities(entities): Promise<Record<string, number>> {

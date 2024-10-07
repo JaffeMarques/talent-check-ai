@@ -15,21 +15,26 @@ export class TextProcessingService {
   private nlpProvider: NlpProvider;
 
   constructor(private readonly i18n: I18nService) {
-    this.nlpProvider = NlpProviderFactory.create(this.configNlpProvider);
+    this.nlpProvider = NlpProviderFactory.create(this.configNlpProvider, i18n);
     this.llmProvider = LlmProviderFactory.create(this.configLlmProvider, i18n);
   }
 
   async process(file, lang: string) {
+    let questions = [];
+    let skills = [];
     const text = await this.extractTextFromPdf(file.buffer);
 
-    const processedText = await this.nlpProvider.processText(text, lang);
-    const skills = processedText.entities;
+    const nlpProcess = await this.nlpProvider.processText(text, lang);
+    skills = nlpProcess.entities.skills;
 
-    const questions = await this.llmProvider.generateQuestions(skills);
+    if (skills) {
+      questions = await this.llmProvider.generateQuestions(skills);
+    }
 
     return {
       questions: questions,
       skills: skills,
+      resume: nlpProcess.entities,
     };
   }
 
