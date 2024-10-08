@@ -6,7 +6,17 @@ import { nxCopyAssetsPlugin } from '@nx/vite/plugins/nx-copy-assets.plugin';
 
 export default defineConfig({
   root: __dirname,
-  cacheDir: '../../node_modules/.vite/apps/talent-check-ai',
+  cacheDir: '../../node_modules/.vite/apps/frontend',
+
+  server: {
+    port: 4200,
+    host: 'localhost',
+  },
+
+  preview: {
+    port: 4300,
+    host: 'localhost',
+  },
 
   plugins: [vue(), nxViteTsPaths(), nxCopyAssetsPlugin(['*.md'])],
 
@@ -14,6 +24,15 @@ export default defineConfig({
   // worker: {
   //  plugins: [ nxViteTsPaths() ],
   // },
+
+  build: {
+    outDir: '../../dist/apps/frontend',
+    emptyOutDir: true,
+    reportCompressedSize: true,
+    commonjsOptions: {
+      transformMixedEsModules: true,
+    },
+  },
 
   test: {
     watch: false,
@@ -23,7 +42,7 @@ export default defineConfig({
 
     reporters: ['default'],
     coverage: {
-      reportsDirectory: '../../coverage/apps/talent-check-ai',
+      reportsDirectory: '../../coverage/apps/frontend',
       provider: 'v8',
     },
   },

@@ -34,7 +34,8 @@ export class TextProcessingService {
     return {
       questions: questions,
       skills: skills,
-      resume: nlpProcess.entities,
+      experience: nlpProcess.entities.experience,
+      resume: nlpProcess.entities.resume,
     };
   }
 

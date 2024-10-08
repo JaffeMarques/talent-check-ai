@@ -1,6 +1,6 @@
 import { getGreeting } from '../support/app.po';
 
-describe('talent-check-ai-e2e', () => {
+describe('frontend-e2e', () => {
   beforeEach(() => cy.visit('/'));
 
   it('should display welcome message', () => {

@@ -8,11 +8,9 @@
       "vite/client",
       "node",
       "vitest"
-    ],
-    "composite": true
+    ]
   },
   "include": [
-    ".nuxt/nuxt.d.ts",
     "vite.config.ts",
     "vitest.config.ts",
     "src/**/*.test.ts",

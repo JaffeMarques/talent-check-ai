@@ -16,7 +16,7 @@ export abstract class LlmProviderBase {
 
   protected formatText(text, splitter): string {
     try {
-      return text.split(splitter + ' - ')[1];
+      return text.split(splitter + ' -')[1];
     } catch (error) {
       this.logger.warn(`Could not format the text: "${error.message}"`);
       return text;
@@ -29,11 +29,9 @@ export abstract class LlmProviderBase {
 
   async generateQuestions(skills) {
     return await Promise.all(
-      Object.keys(skills)
-        .slice(0, 3)
-        .map(async (skill) => {
-          return await this.generateText(skill);
-        })
+      skills.slice(0, 5).map(async (skill) => {
+        return await this.generateText(skill);
+      })
     );
   }
 

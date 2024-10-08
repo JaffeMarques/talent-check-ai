@@ -7,9 +7,12 @@ export default defineConfig({
     ...nxE2EPreset(__filename, {
       cypressDir: 'src',
       bundler: 'vite',
-      webServerCommands: { default: 'npx nx run talent-check-ai:serve' },
-      ciWebServerCommand: 'npx nx run talent-check-ai:serve-static',
-      ciBaseUrl: 'http://localhost:4200',
+      webServerCommands: {
+        default: 'npx nx run frontend:serve',
+        production: 'npx nx run frontend:preview',
+      },
+      ciWebServerCommand: 'npx nx run frontend:preview',
+      ciBaseUrl: 'http://localhost:4300',
     }),
     baseUrl: 'http://localhost:4200',
   },

@@ -4,7 +4,9 @@
     "fileTooLarge": "The maximum file size is {maxSize}",
     "invalidTextExtraction": "Unable to read text, error: {error}"
   },
-  "questionPrompt": "Generate an interview question for the skill: '{skill}'. Please start and end the question with '{skill} -'",
+  "questionPrompt": "Generate an interview question for the skill: '{skill}'. Please start the question with '{skill} - ' and finish the question with '{skill} - '",
   "nlpContext": "You are a highly accurate entity extraction model.",
-  "nlpPrompt": "Extract relevant skills or titles from the following candidate resume in {lang} language:"
+  "nlpPrompt": "Extract relevant informations from the following candidate resume in {lang} language:",
+  "nlpSkillsPrompt": "Extract the hard skills from that resume in {lang}, please, return in this format '- skill:'",
+  "nlpExperiencePrompt": "Please calculate the total years of experience, starting from the earliest hard skill until the present. Additionally, provide a breakdown of years of experience for each individual hard skill. The response should be in the following format: \n experience: \n total: X years \n [Skill 1]: X years \n [Skill 2]: X years. For this resume:"
 }

@@ -25,12 +25,29 @@ export class OpenAiNlpProvider implements NlpProvider {
     });
   }
 
-  async processText(
-    text: string,
-    lang: string
-  ): Promise<{ entities: Record<string, string> }> {
-    const prompt = this.createPrompt(text, lang);
+  async processText(text: string, lang: string) {
+    const resume = this.createPrompt('nlpPrompt', text, lang);
+    const resumeResponse = await this.callOpenAI(resume);
+    const processedResume = await this.processEntities(resumeResponse);
 
+    const years = this.createPrompt('nlpExperiencePrompt', text, lang);
+    const yearsResponse = await this.callOpenAI(years);
+    const processedYears = await this.processEntities(yearsResponse);
+
+    const skills = this.createPrompt('nlpSkillsPrompt', text, lang);
+    const skillsResponse = await this.callOpenAI(skills);
+    const processedSkills = await this.processSkills(skillsResponse);
+
+    return {
+      entities: {
+        skills: processedSkills,
+        resume: processedResume,
+        experience: processedYears,
+      },
+    };
+  }
+
+  async callOpenAI(prompt: string) {
     const response = await this.httpClient.post('/chat/completions', {
       model: this.model,
       messages: [
@@ -47,15 +64,11 @@ export class OpenAiNlpProvider implements NlpProvider {
       temperature: this.temperature,
     });
 
-    const processedEntities = await this.processEntities(
-      response.data.choices[0].message.content
-    );
-
-    return { entities: processedEntities };
+    return response.data.choices[0].message.content;
   }
 
-  private createPrompt(text: string, lang: string) {
-    return `${this.i18n.translate('translations.nplPrompt', {
+  private createPrompt(key: string, text: string, lang: string = null) {
+    return `${this.i18n.translate(`translations.${key}`, {
       args: { lang },
     })}\n\n${text}`;
   }
@@ -91,5 +104,12 @@ export class OpenAiNlpProvider implements NlpProvider {
     }
 
     return entities;
+  }
+
+  processSkills(responseText: string): string[] {
+    return responseText
+      .split('- ')
+      .map((line) => line.trim().replace('\n', ''))
+      .filter((line) => line !== '');
   }
 }
