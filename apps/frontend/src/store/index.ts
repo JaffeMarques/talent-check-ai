@@ -19,7 +19,12 @@ export default createStore({
     questions: ['Can you provide an example of a situation where...'],
     skills: ['PHP', 'JavaScript', 'Python'],
     experience: {
-      experience: ['total: 10 years', 'PHP: 9 years'],
+      experience: [
+        'total: 10 years',
+        'PHP: 9 years',
+        'JavaScript: 7 years',
+        'Python: 5 years',
+      ],
     },
   },
   mutations: {},
