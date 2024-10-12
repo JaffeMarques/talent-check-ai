@@ -54,8 +54,7 @@ export default createStore({
     resume: {
       '- Contact:': [
         'Email: jaffemarquessilva@gmail.com',
-        'Phone Number: 81989659700',
-        'LinkedIn: https://www.linkedin.com/in/jaffe-marques/',
+        'Phone: 81989659700',
       ],
       '- Professional Summary:': [
         'Technology enthusiast and programmer',

@@ -14,11 +14,10 @@
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
       <div v-for="(years, tech) in skillExperience" :key="tech"
         class="bg-gray-800 p-4 rounded-lg shadow-md border hover:bg-purple-700 border-purple-700">
-        <h4 class="text-lg font-semibold text-purple-300 mb-2">{{ formatTech(tech) }}</h4>
-        <div class="flex items-center">
-          <span class="material-icons mr-2 text-purple-400">timeline</span>
-          <span class="text-2xl font-bold text-gray-300">{{ formatYears(years) }}</span>
-        </div>
+        <h4 class="text-lg font-semibold text-purple-300 mb-2">
+          {{ formatTech(tech) }}:
+          <span class="text-1xl font-bold text-gray-300">{{ formatYears(years) }}</span>
+        </h4>
       </div>
     </div>
 
