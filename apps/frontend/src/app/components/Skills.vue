@@ -1,8 +1,9 @@
 <template>
   <section class="mb-6">
-    <h2 class="text-2xl font-semibold mb-3 text-purple-600">Skills</h2>
+    <h2 class="text-3xl font-semibold mb-5 text-purple-500">Skills</h2>
     <div class="flex flex-wrap gap-2">
-      <span v-for="(skill, index) in skills" :key="index" class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full">
+      <span v-for="(skill, index) in skills" :key="index"
+        class="px-3 py-1 bg-purple-800 hover:bg-purple-700 text-white rounded-full">
         {{ skill }}
       </span>
     </div>

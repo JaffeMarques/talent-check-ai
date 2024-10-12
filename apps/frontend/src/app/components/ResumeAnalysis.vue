@@ -1,13 +1,13 @@
 <template>
-  <div class="max-w-4xl mx-auto p-6 bg-white shadow-lg rounded-lg">
-    <h1 class="text-3xl font-bold mb-6 text-purple-700">Candidate's Resume</h1>
-    <ContactInfo :contact="resume['- Contact:']" />
-    <ProfessionalSummary :summary="resume['- Professional Summary:']" />
-    <Education :education="resume['- Education:']" />
-    <Certificates :certificates="resume['- Certificates:']" />
-    <Experience :experience="resume['- Experience:']" :experienceYears="experience" />
-    <Skills :skills="skills" />
+  <div class="bg-slate-800 max-w-4xl mx-auto p-6 shadow-lg rounded-lg">
+    <h1 class="text-4xl font-bold mb-6 text-purple-500">Candidate's Resume</h1>
     <Questions :questions="questions" />
+    <Experience :resume="resume" :experience="experience['experience:']" />
+    <Skills :skills="skills" />
+    <ProfessionalSummary :summary="resume['- Professional Summary:']" />
+    <Certificates :certificates="resume['- Certificates:']" />
+    <ContactInfo :contact="resume['- Contact:']" />
+    <Education :education="resume['- Education:']" />
   </div>
 </template>
 
