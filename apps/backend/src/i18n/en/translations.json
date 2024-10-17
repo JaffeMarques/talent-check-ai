@@ -8,5 +8,6 @@
   "nlpContext": "You are a highly accurate entity extraction model.",
   "nlpPrompt": "Extract relevant informations from the following candidate resume in {lang} language:",
   "nlpSkillsPrompt": "Extract the hard skills from that resume in {lang}, please, return in this format '- skill:'",
-  "nlpExperiencePrompt": "Please calculate the total years of experience, starting from the earliest hard skill until the present. Additionally, provide a breakdown of years of experience for each individual hard skill. The response should be in the following format: \n experience: \n total: X years \n [Skill 1]: X years \n [Skill 2]: X years. For this resume:"
+  "nlpExperiencePrompt": "Please calculate the total years of experience, starting from the earliest hard skill until the present. Additionally, provide a breakdown of years of experience for each individual hard skill. The response should be in the following format: \n experience: \n total: X years \n [Skill 1]: X years \n [Skill 2]: X years. For this resume:",
+  "nlpImprovementPrompt": "Analyze the following candidate resume in {lang} language and suggest specific improvements that can enhance its effectiveness, clarity, or presentation:"
 }

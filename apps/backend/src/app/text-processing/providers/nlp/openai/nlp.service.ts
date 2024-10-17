@@ -38,11 +38,16 @@ export class OpenAiNlpProvider implements NlpProvider {
     const skillsResponse = await this.callOpenAI(skills);
     const processedSkills = await this.processSkills(skillsResponse);
 
+    const improvement = this.createPrompt('nlpImprovementPrompt', text, lang);
+    const improvementResponse = await this.callOpenAI(improvement);
+    const processedImprovement = await this.processSkills(improvementResponse);
+
     return {
       entities: {
         skills: processedSkills,
         resume: processedResume,
         experience: processedYears,
+        improvement: processedImprovement,
       },
     };
   }
